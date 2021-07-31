@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class PostDto {
-	Integer id;
+	String id;
 	String title;
 	String content;
 	String author;

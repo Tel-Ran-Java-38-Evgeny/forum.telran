@@ -1,6 +1,7 @@
 package telran.java38.forum.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +24,12 @@ public class ForumController {
 	}
 	
 	@GetMapping("/forum/post/{id}")
-	public PostDto findPost(@PathVariable Integer id) {
+	public PostDto findPost(@PathVariable String id) {
 		return forumService.findPostById(id);
+	}
+	
+	@DeleteMapping("/forum/post/{id}")
+	public PostDto deletePost(@PathVariable String id) {
+		return forumService.deletePostById(id);
 	}
 }

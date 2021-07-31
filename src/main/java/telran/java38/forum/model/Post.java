@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @EqualsAndHashCode(of = {"id"})
 public class Post {
-	Integer id;
+	String id;
 	@Setter
 	String title;
 	@Setter
@@ -24,20 +24,20 @@ public class Post {
 	List<Object> comments;
 	
 	public Post(String title, String content, String author, List<String> tags) {
-		id = generateId();
 		this.title = title;
 		this.content = content;
 		this.author = author;
 		dateCreated = LocalDateTime.now();
 		this.tags = tags;
+		likes = 0;
 		comments = new ArrayList<Object>();
-	}
-	
-	private Integer generateId() {
-		return (int) Math.floor(Math.random()) + 100000;
 	}
 
 	public boolean addComment(Object comment) {
 		return comments.add(comment);
+	}
+	
+	public Integer addLike() {
+		return likes++;
 	}
 }
