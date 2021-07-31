@@ -26,6 +26,7 @@ public class ForumServiceImpl implements ForumService {
 				.comments(post.getComments())
 				.build();
 	}
+	
 	@Override
 	public PostDto addPost(String author, PostBaseDto postBaseDto) {
 		Post post = new Post(postBaseDto.getTitle(), postBaseDto.getContent(), author, postBaseDto.getTags());
@@ -65,6 +66,4 @@ public class ForumServiceImpl implements ForumService {
 		forumRepository.save(post);
 		return convertToPostDto(post);
 	}
-
-
 }
