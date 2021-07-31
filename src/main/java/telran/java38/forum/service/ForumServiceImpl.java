@@ -59,13 +59,13 @@ public class ForumServiceImpl implements ForumService {
 	public PostDto updatePost(String id, PostBaseDto postBaseDto) {
 		Post post = forumRepository.findById(id)
 				.orElseThrow(() -> new PostNotFoundException(id));
-		if (postBaseDto.getTitle() == null) {
+		if (postBaseDto.getTitle() != null) {
 			post.setTitle(postBaseDto.getTitle());
 		}
-		if (postBaseDto.getContent() == null) {
+		if (postBaseDto.getContent() != null) {
 			post.setContent(postBaseDto.getContent());
 		}
-		if (postBaseDto.getTags() == null) {
+		if (postBaseDto.getTags() != null) {
 			post.setTags(postBaseDto.getTags());
 		}
 		forumRepository.save(post);
@@ -77,7 +77,7 @@ public class ForumServiceImpl implements ForumService {
 		Post post = forumRepository.findById(id)
 				.orElseThrow(() -> new PostNotFoundException(id));
 		post.addLike();
-		return convertToPostDto(post).getLikes() == post.getLikes();
+		return forumRepository.save(post) != null;
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class ForumController {
 	public PostDto addPost(@PathVariable String author, @RequestBody PostBaseDto postBaseDto) {
 		return forumService.addPost(author, postBaseDto);
 	}
-	
+		
 	@GetMapping("/forum/post/{id}")
 	public PostDto findPost(@PathVariable String id) {
 		return forumService.findPostById(id);
