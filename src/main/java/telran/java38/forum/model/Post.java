@@ -21,7 +21,7 @@ public class Post {
 	@Setter
 	List<String> tags;
 	Integer likes;
-	List<Comments> comments;
+	List<Comment> comments;
 	
 	public Post(String title, String content, String author, List<String> tags) {
 		this.title = title;
@@ -30,14 +30,14 @@ public class Post {
 		dateCreated = LocalDateTime.now();
 		this.tags = tags;
 		likes = 0;
-		comments = new ArrayList<Comments>();
+		comments = new ArrayList<Comment>();
 	}
 
-	public boolean addComment(Comments comment) {
+	public boolean addComment(Comment comment) {
 		return comments.add(comment);
 	}
 	
 	public Integer addLike() {
-		return likes++;
+		return ++likes;
 	}
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import lombok.Builder;
 import lombok.Getter;
-import telran.java38.forum.model.Comments;
+import telran.java38.forum.model.Comment;
 
 @Getter
 @Builder
@@ -17,5 +17,5 @@ public class PostDto {
 	LocalDateTime dateCreated;
 	List<String> tags;
 	Integer likes;
-	List<Comments> comments;
+	List<Comment> comments;
 }
