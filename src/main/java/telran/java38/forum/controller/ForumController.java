@@ -54,7 +54,7 @@ public class ForumController {
 	}
 	
 	@GetMapping("/forum/posts/author/{author}")
-	public List<PostDto> findPostsByAuthor(String author) {
+	public List<PostDto> findPostsByAuthor(@PathVariable String author) {
 		return forumService.findPostsByAuthor(author);
 	}
 	
