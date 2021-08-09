@@ -3,8 +3,11 @@ package telran.java38.forum.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import telran.java38.forum.dao.ForumMongoRepository;
 import telran.java38.forum.dto.PostBaseDto;
@@ -13,23 +16,27 @@ import telran.java38.forum.dto.exceptions.PostNotFoundException;
 import telran.java38.forum.model.Comment;
 import telran.java38.forum.model.Post;
 
-@Component
+@Service
 public class ForumServiceImpl implements ForumService {
 	
 	@Autowired
 	ForumMongoRepository forumRepository;
 	
+	@Autowired
+	ModelMapper modelMapper;
+	
 	private PostDto convertToPostDto(Post post) {
-		return PostDto.builder()
-				.id(post.getId())
-				.title(post.getTitle())
-				.content(post.getContent())
-				.author(post.getAuthor())
-				.dateCreated(post.getDateCreated())
-				.tags(post.getTags())
-				.likes(post.getLikes())
-				.comments(post.getComments())
-				.build();
+		return modelMapper.map(post, PostDto.class);
+//		return PostDto.builder()
+//				.id(post.getId())
+//				.title(post.getTitle())
+//				.content(post.getContent())
+//				.author(post.getAuthor())
+//				.dateCreated(post.getDateCreated())
+//				.tags(post.getTags())
+//				.likes(post.getLikes())
+//				.comments(post.getComments())
+//				.build();
 	}
 	
 	@Override
